@@ -9,7 +9,7 @@ const port = 3002;
 
 // Enable CORS
 app.use(cors({
-  origin: 'http://localhost:3000', // Frontend URL
+  origin: 'https://eamonsite-bjdo.vercel.app/', // Frontend URL
   methods: ['POST'],
   allowedHeaders: ['Content-Type']
 }));
@@ -30,7 +30,7 @@ app.post('/send-email', (req, res) => {
 
   const mailOptions = {
     from: process.env.GMAIL_USER,
-    to: 'isabiryeelijah15@gmail.com',
+    to: 'isikoemanuel.ie@gmail.com,isabiryeelijah15@gmail.com',
     subject: `New Order from ${name}`,
     text: `Name: ${name}\nEmail: ${email}\nContact: ${contact}\nComment: ${comment}`
   };
