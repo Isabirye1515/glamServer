@@ -5,11 +5,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = 3002;
+const port = 3003;
 
 // Enable CORS
 app.use(cors({
-  origin: 'https://eamonsite-bjdo.vercel.app/', // Frontend URL
+  origin: 'http://localhost:3000', // Frontend URL
   methods: ['POST'],
   allowedHeaders: ['Content-Type']
 }));
@@ -30,7 +30,7 @@ app.post('/send-email', (req, res) => {
 
   const mailOptions = {
     from: process.env.GMAIL_USER,
-    to: 'isikoemanuel.ie@gmail.com,isabiryeelijah15@gmail.com',
+    to: 'isabiryeelijah15@gmail.com',
     subject: `New Order from ${name}`,
     text: `Name: ${name}\nEmail: ${email}\nContact: ${contact}\nComment: ${comment}`
   };
