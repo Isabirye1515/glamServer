@@ -9,7 +9,7 @@ const port = 3003;
 
 // Enable CORS
 app.use(cors({
-  origin: 'http://localhost:3000', // Frontend URL
+  origin: 'https://eamon-net-bwfd.vercel.app/', // Frontend URL
   methods: ['POST'],
   allowedHeaders: ['Content-Type']
 }));
