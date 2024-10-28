@@ -30,7 +30,7 @@ app.post('/send-email', (req, res) => {
 
   const mailOptions = {
     from: process.env.GMAIL_USER,
-    to: 'isabiryeelijah15@gmail.com',
+    to: 'isabiryeelijah15@gmail.com     ',
     subject: `New Order from ${name}`,
     text: `Name: ${name}\nEmail: ${email}\nContact: ${contact}\nComment: ${comment}`
   };
@@ -49,7 +49,7 @@ app.post('/get-purfumes', (req, res) => {
 
   const mailOptions = {
     from: process.env.GMAIL_USER,
-    to: 'isabiryeelijah15@gmail.com',
+    to: 'olivenamigadde8@gmail.com',
     subject: `New Order from ${name}`,
     text: `Name: ${name}|nPhone Number:${phone}\nEmail: ${email}\nGender: ${gender}\nComment: ${comment}`
   };
