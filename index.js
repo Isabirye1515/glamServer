@@ -49,7 +49,7 @@ app.post('/get-purfumes', (req, res) => {
 
   const mailOptions = {
     from: process.env.GMAIL_USER,
-    to: 'olivenamigadde8@gmail.com',
+    to: 'isabiryeelijah15@gmail.com  olivenamigadde8@gmail.com',
     subject: `New Order from ${name}`,
     text: `Name: ${name}|nPhone Number:${phone}\nEmail: ${email}\nGender: ${gender}\nComment: ${comment}`
   };
