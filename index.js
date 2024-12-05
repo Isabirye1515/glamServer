@@ -8,7 +8,7 @@ const app = express();
 const port = 3003;
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://livi-fragrances.vercel.app', 'https://eamon-net-bwfd.vercel.app'],
+  origin: ['http://localhost:3000', 'https://gram-squad-haven.vercel.app/'],
   methods: ['POST'],
   allowedHeaders: ['Content-Type']
 }));
@@ -26,42 +26,30 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/send-email', (req, res) => {
-  const { name, email, contact, comment } = req.body;
+  console.log(req.body);  // Log the body of the request
+  const { name, email, contact, company, subject, comment } = req.body;
+
+  if (!name || !email || !contact || !company || !subject || !comment) {
+      return res.status(400).send({ message: 'Missing required fields' });
+  }
 
   const mailOptions = {
-    from: process.env.GMAIL_USER,
-    to: 'isabiryeelijah15@gmail.com     ',
-    subject: `New Order from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nContact: ${contact}\nComment: ${comment}`
+      from: process.env.GMAIL_USER,
+      to: 'glamsquadhaven@gmail.com',
+      subject: `New Order from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\nContact: ${contact}\nCompany:${company}\nSubject:${subject}\nComment: ${comment}`
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error('Error sending email:', error);
-      return res.status(500).send({ message: 'Error sending email', error: error.toString() });
-    }
-    res.status(200).send({ message: 'Email sent successfully!' });
+      if (error) {
+          console.error('Error sending email:', error);
+          return res.status(500).send({ message: 'Error sending email', error: error.toString() });
+      }
+      res.status(200).send({ message: 'Email sent successfully!' });
   });
 });
 
-app.post('/get-purfumes', (req, res) => {
-  const { name, phone, email,gender,comment } = req.body;
 
-  const mailOptions = {
-    from: process.env.GMAIL_USER,
-    to: 'olivenamigadde8@gmail.com',
-    subject: `New Order from ${name}`,
-    text: `Name: ${name}|nPhone Number:${phone}\nEmail: ${email}\nGender: ${gender}\nComment: ${comment}`
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error('Error sending email:', error);
-      return res.status(500).send({ message: 'Error sending email', error: error.toString() });
-    }
-    res.status(200).send({ message: 'Email sent successfully!' });
-  });
-});
 
 
 app.listen(port, () => {
