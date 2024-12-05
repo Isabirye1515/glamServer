@@ -8,7 +8,7 @@ const app = express();
 const port = 3003;
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://gram-squad-haven.vercel.app/'],
+  origin: ['http://localhost:3000', 'https://gram-squad-haven.vercel.app'],
   methods: ['POST'],
   allowedHeaders: ['Content-Type']
 }));
